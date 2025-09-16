@@ -78,3 +78,7 @@ n_episode :320, score : 171.0, n_buffer : 45751, eps : 0.0%
 ```
 Test set: Average loss: 0.0603, Accuracy: 9846/10000 (98%)
 ```
+## nanoGPT Results
+```
+step 2000: train loss 1.8348, val loss 1.9380
+```
