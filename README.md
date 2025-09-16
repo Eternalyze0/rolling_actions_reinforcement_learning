@@ -53,7 +53,7 @@ class Qnet(nn.Module):
         self.ri %= 2
         return x
 ```
-## Example Run
+## Cartpole Results
 ```
 % python3.10 rolling_actions_dqn.py
 n_episode :20, score : 42.5, n_buffer : 851, eps : 0.0%
@@ -73,4 +73,8 @@ n_episode :280, score : 248.4, n_buffer : 37554, eps : 0.0%
 n_episode :300, score : 238.8, n_buffer : 42331, eps : 0.0%
 n_episode :320, score : 171.0, n_buffer : 45751, eps : 0.0%
 (infinite score achieved here)
+```
+## MNIST Results
+```
+Test set: Average loss: 0.0603, Accuracy: 9846/10000 (98%)
 ```
