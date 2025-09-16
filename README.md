@@ -31,4 +31,25 @@ class Qnet(nn.Module):
         self.ri %= 2
         return x
 ```
+Alternatively,
+```py
+class Qnet(nn.Module):
+    def __init__(self):
+        super(Qnet, self).__init__()
+        self.fc1 = nn.Linear(6, 128)
+        self.fc2 = nn.Linear(128, 128)
+        self.fc3 = nn.Linear(128, 2)
+        self.ri = torch.tensor(0)
 
+    def forward(self, x):
+        if len(x.shape) == 1:
+            x = x.unsqueeze(0)
+        x = F.relu(self.fc1(torch.cat([x, F.one_hot(self.ri, num_classes=2).expand(x.shape[0], 2)], dim=1)))
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)
+        if self.ri % 2 == 1:
+            x = torch.roll(x, 1, -1)
+        self.ri += 1
+        self.ri %= 2
+        return x
+```
